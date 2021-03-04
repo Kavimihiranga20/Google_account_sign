@@ -1,0 +1,181 @@
+<html>
+<head>
+<title>my form</title>
+
+<style>
+
+input[type=text], select {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+background-color:#f2f2f2;
+color:black;
+}
+input[type=submit] {
+background-color: #DD001B;
+color: white;
+padding: 12px 20px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+float: right;
+
+}
+
+input[type=submit]:hover {
+background-color: #45a049;
+}
+
+div {
+border-radius: 8px;
+padding: 20px;
+border-color:white;
+}
+
+input[type=radio]{
+color: white;
+}
+
+input[type=number], select {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+background-color:#f2f2f2;
+color:black;
+}
+
+input[type=password], select {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+background-color:#f2f2f2;
+color:black;
+}
+table{
+border-radius: 30px;
+padding: 30px;
+background-image:url("jjj.jfif");
+background-repeat:no-repeat;
+background-size:500px 600px;
+}
+
+h1,h4{
+color:black;
+}
+h5{
+color:black;
+}
+
+</style>
+<script type="text/javascript">
+function checkForm(form)
+  {
+    if(form.username.value == "") {
+      alert("Error: Username cannot be blank!");
+      form.username.focus();
+      return false;
+    }
+    re = /^\w+$/;
+    if(!re.test(form.username.value)) {
+      alert("Error: Username must contain only letters, numbers and underscores!");
+      form.username.focus();
+      return false;
+    } 
+	  var x= form.em.value;
+     var atpos = x.indexOf("@");
+     var dotpos = x.lastIndexOf(".");
+     if(atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length){
+     alert("Not a vaild e-mail adreess");
+      return false;
+      }
+
+    if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
+      if(form.pwd1.value.length < 6) {
+        alert("Error: Password must contain at least six characters!");
+        form.pwd1.focus();
+        return false;
+      }
+      if(form.pwd1.value == form.username.value) {
+        alert("Error: Password must be different from Username!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[0-9]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one number (0-9)!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[a-z]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one lowercase letter (a-z)!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[A-Z]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one uppercase letter (A-Z)!");
+        form.pwd1.focus();
+        return false;
+      }
+    } else {
+      alert("Error: Please check that you've entered and confirmed your password!");
+      form.pwd1.focus();
+      return false;
+    }
+
+    alert("You entered a valid password: " );
+    return true;
+  }
+</script>
+
+
+</head>
+<center>
+<body>
+<form ... onsubmit="return checkForm(this);">
+<table width=500 style="border:1px solid black;">
+<tr><th colspan=2><h1>Google Account Sign</h1></th></tr>
+
+<tr><td><h4>User Name</h4></td><td><input type="text" name="username" placeholder="your user name..."></td></tr><br>
+
+
+<tr><td><h4>Gender</h4></td><td><h5><input type="radio" name="gender" value="male" checked> Male
+<input type="radio" name="gender" value="female"> Female</h5></td></tr>
+
+<tr><td><h4>Birthday</h4></td><td><input type="date"></td></tr>
+
+
+<tr><td><h4>E-mail</h4></td><td><input type="text" name="em" placeholder="your e-mail..."></td></tr>
+
+<tr><td><h4>Phone</h4></td><td><input type="number" name"ph" placeholder="your phone number..."></td></tr>
+
+<tr><td><h4>Password</h4></td><td><input type="password"  name="pwd1"></td></tr>
+
+<tr><td><h4>Conform password</h4></td><td><input type="password" name="pwd2"></td></tr>
+
+<tr><td><h4><input name="agree" type="checkbox"> I Agree to the terms</h4></td>
+<td>
+<input type="submit" value="Submit">
+
+</td></tr>
+
+
+
+</table>
+</form>
+</body>
+</center>
+</html>
